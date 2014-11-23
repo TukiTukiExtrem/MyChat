@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TextArea id="chatarea" fx:id="chatarea" editable="false" stylesheets="@Button.css" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox fx:id="menu" alignment="TOP_CENTER" prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #DBDBDB;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="message" disable="true" prefHeight="25.0" prefWidth="273.0">
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin></TextField>
+            <CheckBox fx:id="filter" mnemonicParsing="false" text="Badwordfilter">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </CheckBox>
+            <Button fx:id="senden" disable="true" mnemonicParsing="false" stylesheets="@Button.css" text="Senden">
+               <HBox.margin>
+                  <Insets right="5.0" top="2.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="verbinden" mnemonicParsing="false" stylesheets="@Button.css" text="Verbinden">
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
