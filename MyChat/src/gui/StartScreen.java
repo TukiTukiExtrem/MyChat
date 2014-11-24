@@ -118,6 +118,7 @@ public class StartScreen extends Application {
 	 */
 	public void switchScene(Scene s) {
 		this.stage.setScene(s);
+		this.stage.setResizable(true);
 	}
 
 	/**

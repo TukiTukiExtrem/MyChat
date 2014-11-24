@@ -60,6 +60,7 @@ public class Controller implements EventHandler<ActionEvent> {
 		senden.setOnAction(this);
 
 		area = (TextArea) chat.getScene().lookup("#chatarea");
+		area.setWrapText(true);
 
 		nachricht = (TextField) chat.getScene().lookup("#message");
 		nachricht.setOnAction(this);
