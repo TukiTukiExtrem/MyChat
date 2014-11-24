@@ -12,6 +12,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author Wortha Simon
+ * 
+ *         Die GUI zum Willkommen-Anzeigefenster
+ *
+ */
 public class StartScreen extends Application {
 
 	private GridPane grid;
@@ -82,22 +88,42 @@ public class StartScreen extends Application {
 		stage.show();
 	}
 
+	/**
+	 * startet startscreen => die Stage (das Fenster) öffnet sich
+	 * 
+	 * @param args
+	 *            es muss nichts uebergeben werden
+	 */
 	public static void main(String[] args) {
 		launch();
 	}
 
+	/**
+	 * @return gibt die IP bzw. den Text im Texfield zurueck
+	 */
 	public String getIP() {
 		return iptext.getText();
 	}
 
+	/**
+	 * @return gibt den Port bzw. den Text im Texfield zurueck
+	 */
 	public String getPort() {
 		return porttext.getText();
 	}
 
+	/**
+	 * @param s
+	 *            setzt die Stage auf eine neue Scene
+	 */
 	public void switchScene(Scene s) {
 		this.stage.setScene(s);
 	}
 
+	/**
+	 * @param s
+	 *            setzt den Text Meldung auf den zu üebergebenden String
+	 */
 	public void setMeldung(String s) {
 		this.meldung.setText(s);
 	}

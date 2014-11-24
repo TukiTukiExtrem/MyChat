@@ -31,8 +31,8 @@ public class ChatServer implements Runnable {
 	/**
 	 * @param portNumber
 	 *            Angabe auf welchem Port die Verbindung laeuft
-	 * @param v
-	 *            Es muss die View, also die GUI uebergen werden, da sonst die
+	 * @param c 
+	 *            Es muss der Controller, welcher die GUI steuert uebergen werden, da sonst die
 	 *            Nachricht nicht weitergegeben werden kann
 	 */
 	public ChatServer(int portNumber, Controller c) {

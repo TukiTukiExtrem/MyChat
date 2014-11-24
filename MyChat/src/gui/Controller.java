@@ -1,4 +1,4 @@
- package gui;
+package gui;
 
 import java.io.IOException;
 
@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import message.Badwordfilter;
 import message.ChatMessage;
 import message.WriteAble;
@@ -34,56 +33,65 @@ public class Controller implements EventHandler<ActionEvent> {
 	TextArea area;
 	TextField nachricht;
 	CheckBox paul;
-	
-	
+
 	/**
 	 * @param hostName
 	 *            Die IP Adresse es Hosts mit dem sich verbunden werden moechte
 	 * @param port
 	 *            Der Port ueber dem die Verbindung laeuft
-	 * @throws IOException 
+	 * @param s
+	 *            Dem Controller muss der Startscreen uebergeben werden, damit
+	 *            er der Stage eine neue scene uebergeben kann
+	 * @throws IOException
 	 */
-	public Controller(String hostName, int port, StartScreen s) throws IOException {
+	public Controller(String hostName, int port, StartScreen s)
+			throws IOException {
 		this.port = port;
 		this.host = hostName;
 		this.screen = s;
 
 		this.chat = new ChatScreen();
 		screen.switchScene(chat.getScene());
-		
+
 		verbinden = (Button) chat.getScene().lookup("#verbinden");
 		verbinden.setOnAction(this);
-		
+
 		senden = (Button) chat.getScene().lookup("#senden");
 		senden.setOnAction(this);
-		
+
 		area = (TextArea) chat.getScene().lookup("#chatarea");
-		
+
 		nachricht = (TextField) chat.getScene().lookup("#message");
 		nachricht.setOnAction(this);
-		
+
 		paul = (CheckBox) chat.getScene().lookup("#filter");
-		
+
 		Thread server = new Thread(new ChatServer(port, this));
 		server.start();
 	}
 
 	@Override
 	public void handle(ActionEvent e) {
-		if(e.getSource() == verbinden) {
+		if (e.getSource() == verbinden) {
 			cc = new ChatClient(host, port);
 			senden.setDisable(false);
 			nachricht.setDisable(false);
 			verbinden.setDisable(true);
 		}
-		if(e.getSource() == senden || e.getSource() == nachricht) {
+		if (e.getSource() == senden || e.getSource() == nachricht) {
 			cc.sendMessage(nachricht.getText());
 			changeArea("ICH: " + nachricht.getText() + "\n");
 			nachricht.setText("");
 		}
-		
+
 	}
-	
+
+	/**
+	 * Fuegt der Textarea neuen Text hinzu
+	 * 
+	 * @param text
+	 *            String der in der Textarea angezegt werden soll
+	 */
 	public void changeArea(String text) {
 		Platform.runLater(() -> {
 			WriteAble message = new ChatMessage(text);
@@ -91,6 +99,6 @@ public class Controller implements EventHandler<ActionEvent> {
 				message = new Badwordfilter(message);
 			area.appendText(message.getString());
 		});
-		
-	}	
+
+	}
 }
