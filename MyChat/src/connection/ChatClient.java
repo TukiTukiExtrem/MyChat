@@ -20,8 +20,9 @@ import org.apache.logging.log4j.Logger;
 public class ChatClient {
 	private static final Logger LOGGER = (Logger) LogManager.getLogger(MyChat.class);
 
-	String hostName;
-	int portNumber;
+	private String hostName;
+	private int portNumber;
+	private String userName;
 	private Socket echoSocket;
 	private PrintWriter out;
 
@@ -34,9 +35,10 @@ public class ChatClient {
 	 * @param portNumber
 	 *            Angabe auf welchem Port die Verbindung laeuft
 	 */
-	public ChatClient(String hostName, int portNumber) {
+	public ChatClient(String hostName, int portNumber, String userName) {
 		this.hostName = hostName;
 		this.portNumber = portNumber;
+		this.userName = userName;
 		this.connect();
 	}
 
@@ -64,6 +66,6 @@ public class ChatClient {
 	 *            weiter.
 	 */
 	public void sendMessage(String msg) {
-		this.out.println(msg);
+		this.out.println(userName +": " +msg);
 	}
 }

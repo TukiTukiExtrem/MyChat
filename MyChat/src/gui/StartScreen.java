@@ -25,8 +25,10 @@ public class StartScreen extends Application {
 	private Text willkommen;
 	private Label ip;
 	private Label port;
+	private Label user;
 	private TextField iptext;
 	private TextField porttext;
+	private TextField usertext;
 	private Button btn;
 	private HBox hbBtn;
 	private Text meldung;
@@ -69,17 +71,23 @@ public class StartScreen extends Application {
 
 		this.porttext = new TextField();
 		grid.add(porttext, 1, 2);
+		
+		this.user = new Label("Benutzername:");
+		grid.add(user, 0, 3);
+		
+		this.usertext = new TextField();
+		grid.add(usertext, 1, 3);
 
 		this.btn = new Button("zum Chat");
 		this.hbBtn = new HBox(10);
 		hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
 		hbBtn.getChildren().add(btn);
-		grid.add(hbBtn, 1, 4);
+		grid.add(hbBtn, 1, 5);
 
 		btn.setOnAction(con);
 
 		this.meldung = new Text();
-		grid.add(meldung, 1, 6);
+		grid.add(meldung, 1, 7);
 		meldung.setId("meldung");
 
 		stage.setOnCloseRequest(t -> System.exit(0));
@@ -127,5 +135,9 @@ public class StartScreen extends Application {
 	 */
 	public void setMeldung(String s) {
 		this.meldung.setText(s);
+	}
+	
+	public String getUser() {
+		return usertext.getText();
 	}
 }

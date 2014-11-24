@@ -74,14 +74,14 @@ public class Controller implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent e) {
 		if (e.getSource() == verbinden) {
-			cc = new ChatClient(host, port);
+			cc = new ChatClient(host, port, screen.getUser());
 			senden.setDisable(false);
 			nachricht.setDisable(false);
 			verbinden.setDisable(true);
 		}
 		if (e.getSource() == senden || e.getSource() == nachricht) {
 			cc.sendMessage(nachricht.getText());
-			changeArea("ICH: " + nachricht.getText() + "\n");
+			changeArea("Ich: " + nachricht.getText() + "\n");
 			nachricht.setText("");
 		}
 
